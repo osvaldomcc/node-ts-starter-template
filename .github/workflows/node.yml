@@ -1,0 +1,20 @@
+name: '🐢 Node'
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout 🛬
+        uses: actions/checkout@v4
+      - name: Setup Node ⚙️
+        uses: ./.github/actions/setup-node
+      - name: Lint code 💅
+        run: node --run lint
+      - name: Build typescript 📦
+        run: node --run build && find dist/server.js

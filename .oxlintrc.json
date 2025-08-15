@@ -1,0 +1,9 @@
+{
+  "plugins": ["import"],
+  "rules": {
+    "no-var": "error",
+    "import/no-cycle": "error",
+    "default-param-last": "error",
+    "guard-for-in": "error"
+  }
+}

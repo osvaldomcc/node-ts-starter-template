@@ -1,0 +1,59 @@
+{
+  "name": "express-ts-starter-template",
+  "version": "1.0.0",
+  "main": "dist/server.mjs",
+  "type": "module",
+  "description": "Skeleton for new typescript services based on express",
+  "author": "Osvaldo Miguel Castillo Calderón",
+  "license": "ISC",
+  "exports": "./dist/server.mjs",
+  "scripts": {
+    "build": "node --run type-check && node --run build:clean && node --run generate-dist",
+    "start": "node --env-file=.env dist/server.js",
+    "dev": "tsx --env-file=.env.development --watch ./src/server.ts",
+    "type-check": "tsc --noEmit",
+    "lint": "oxlint --fix",
+    "build:clean": "rimraf dist; exit 0",
+    "generate-dist": "swc ./src -d dist --strip-leading-paths",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "typescript",
+    "express",
+    "template"
+  ],
+  "engines": {
+    "node": ">=22.x",
+    "pnpm": ">=10.x"
+  },
+  "packageManager": "pnpm@10.6.5",
+  "devDependencies": {
+    "@prettier/plugin-oxc": "0.0.4",
+    "@swc/cli": "0.7.8",
+    "@swc/core": "1.13.3",
+    "@total-typescript/ts-reset": "0.6.1",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.3",
+    "@types/node": "24.2.1",
+    "husky": "9.1.7",
+    "lint-staged": "16.1.5",
+    "oxlint": "1.11.2",
+    "prettier": "3.6.2",
+    "rimraf": "6.0.1",
+    "tsx": "4.20.4",
+    "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "5.1.0",
+    "helmet": "8.1.0",
+    "uuid": "11.1.0",
+    "winston": "3.17.0",
+    "winston-daily-rotate-file": "5.0.0",
+    "zod": "4.0.17"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,ts,mts,cts,json}": "prettier . --write",
+    "**/*.{js,mjs,cjs,ts,mts,cts}": "oxlint --fix"
+  }
+}
